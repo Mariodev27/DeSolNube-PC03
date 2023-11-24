@@ -93,7 +93,7 @@ app.post('/save', upload.single('foto'), async (req, res) => {
 
       await s3.upload(params).promise();
     }
-
+    
     await connection.promise().query(
       'INSERT INTO estudiantes SET ?',
       { nombre, apellidos, correo, programa, edad, dni, foto: s3Key }
